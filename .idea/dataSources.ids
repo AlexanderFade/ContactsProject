@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - contacts@localhost" uuid="446747f8-8b5b-41a9-b9ed-da113987d92e">
+    <database-info product="MySQL" version="5.6.21" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <schema name="" catalog="contacts"/>
+    <table name="email" schema="" catalog="contacts" type="TABLE">
+      <column name="email" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="email_user_id_FK" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="email"/>
+      <foreign-key name="email_user_id_FK" columns="email_user_id_FK" ref-table="users" ref-schema="" ref-catalog="contacts" ref-columns="user_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="email_UNIQUE" unique="true" columns="email"/>
+      <index name="user_id_FK_idx" unique="false" columns="email_user_id_FK"/>
+    </table>
+    <table name="phone" schema="" catalog="contacts" type="TABLE">
+      <column name="phone" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="phone_user_id_FK" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="phone"/>
+      <foreign-key name="phone_user_id_FK" columns="phone_user_id_FK" ref-table="users" ref-schema="" ref-catalog="contacts" ref-columns="user_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="phone_UNIQUE" unique="true" columns="phone"/>
+      <index name="phone_user_id_FK_idx" unique="false" columns="phone_user_id_FK"/>
+    </table>
+    <table name="users" schema="" catalog="contacts" type="TABLE">
+      <column name="user_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="login" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="first_name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="second_name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="user_id"/>
+      <exported-key name="email_user_id_FK" table="email" schema="" catalog="contacts" columns="email_user_id_FK"/>
+      <exported-key name="phone_user_id_FK" table="phone" schema="" catalog="contacts" columns="phone_user_id_FK"/>
+      <index name="login_UNIQUE" unique="true" columns="login"/>
+      <index name="user_id_UNIQUE" unique="true" columns="user_id"/>
+    </table>
+  </data-source>
+</component>
