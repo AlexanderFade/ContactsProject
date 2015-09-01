@@ -25,5 +25,8 @@
         <module name="ContactsProject" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ContactsProject" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>

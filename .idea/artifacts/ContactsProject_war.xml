@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ContactsProject:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="afpc-0.0.1-BUILD-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ContactsProject:war exploded" />
+    </root>
+  </artifact>
+</component>
