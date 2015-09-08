@@ -10,9 +10,12 @@ import java.util.List;
  */
 public interface PhoneDAO {
 
-    void create(Phone phone);
-    List<Phone> readAll();
-    void update(Phone phone);
-    void delete(Phone phone);
+    void createPhone(Phone phone);
+    List<Phone> getAllPhones();
+    List<Phone> getAllPhonesByUser(Integer userId);
+    Phone getPhoneByUser(Integer userId);
+    void updatePhone(Phone phone);
+    void deletePhone(Integer phoneId);
+    void deleteAllPhonesByUser(Integer userId);
 
 }
