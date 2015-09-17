@@ -13,30 +13,14 @@ import java.util.List;
 public class User implements Serializable{
 
     private Integer userId;
-
     private String login;
-
     private String first_name;
-
     private String second_name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Email> emails;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Phone> phones;
 
-//    }
-
-    //    public User() {
-//
-//    }
-//
-//    public User(Integer userId, String login, String first_name, String second_name) {
-//        this.userId = userId;
-//        this.login = login;
-//        this.first_name = first_name;
-//        this.second_name = second_name;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID")
@@ -75,19 +59,21 @@ public class User implements Serializable{
         this.second_name = second_name;
     }
 
-//    public List<Email> getEmails() {
-//        return emails;
-//    }
-//
-//    public void setEmails(List<Email> emails) {
-//        this.emails = emails;
-//    }
-//
-//    public List<Phone> getPhones() {
-//        return phones;
-//    }
-//
-//    public void setPhones(List<Phone> phones) {
-//        this.phones = phones;
-//    }
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    public List<Email> getEmails() {
+        return emails;
+    }
+
+    public void setEmails(List<Email> emails) {
+        this.emails = emails;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    public List<Phone> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(List<Phone> phones) {
+        this.phones = phones;
+    }
 }

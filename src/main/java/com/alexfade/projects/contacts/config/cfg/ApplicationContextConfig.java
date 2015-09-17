@@ -65,8 +65,8 @@ public class ApplicationContextConfig {
         sessionBuilder.addProperties(getHibernateProperties());
 
         sessionBuilder.addAnnotatedClasses(User.class);
-//        sessionBuilder.addAnnotatedClasses(Phone.class);
-//        sessionBuilder.addAnnotatedClasses(Email.class);
+        sessionBuilder.addAnnotatedClasses(Phone.class);
+        sessionBuilder.addAnnotatedClasses(Email.class);
 
 
         return sessionBuilder.buildSessionFactory();
@@ -83,20 +83,20 @@ public class ApplicationContextConfig {
     }
 
     @Autowired
-    @Bean(name = "userDao")
+    @Bean(name = "userDAO")
     public UserDAO getUserDao(SessionFactory sessionFactory) {
         return new UserDAOImpl(sessionFactory);
     }
 
-//    @Autowired
-//    @Bean(name = "phoneDao")
-//    public PhoneDAO getPhoneDao(SessionFactory sessionFactory) {
-//        return new PhoneDAOImpl(sessionFactory);
-//    }
-//
-//    @Autowired
-//    @Bean(name = "emailDao")
-//    public EmailDAO getEmailDao(SessionFactory sessionFactory) {
-//        return new EmailDAOImpl(sessionFactory);
-//    }
+    @Autowired
+    @Bean(name = "phoneDAO")
+    public PhoneDAO getPhoneDao(SessionFactory sessionFactory) {
+        return new PhoneDAOImpl(sessionFactory);
+    }
+
+    @Autowired
+    @Bean(name = "phoneDAO")
+    public EmailDAO getEmailDao(SessionFactory sessionFactory) {
+        return new EmailDAOImpl(sessionFactory);
+    }
 }

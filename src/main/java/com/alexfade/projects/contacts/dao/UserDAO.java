@@ -10,8 +10,9 @@ import java.util.List;
  */
 public interface UserDAO {
 
-    void saveOrUpdate(User user);
+    void createUser(User user);
     List<User> readAll();
+    void editUser(User user);
     void delete(User user);
     void deleteById(Integer user_id);
     User getUser(Integer userId);

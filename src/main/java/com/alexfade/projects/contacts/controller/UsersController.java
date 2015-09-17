@@ -23,11 +23,11 @@ import java.util.List;
 public class UsersController{
 
     @Autowired
-    private UserDAO userDao;
+    private UserDAO userDAO;
 
     @RequestMapping("/")
     public ModelAndView handleRequest() throws Exception {
-        List<User> listUsers = userDao.readAll();
+        List<User> listUsers = userDAO.readAll();
         ModelAndView model = new ModelAndView("UserList");
         model.addObject("userList", listUsers);
         return model;
@@ -43,7 +43,7 @@ public class UsersController{
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public ModelAndView editUser(HttpServletRequest request) {
         int userId = Integer.parseInt(request.getParameter("id"));
-        User user = userDao.getUser(userId);
+        User user = userDAO.getUser(userId);
         ModelAndView model = new ModelAndView("UserForm");
         model.addObject("user", user);
         return model;
@@ -52,13 +52,13 @@ public class UsersController{
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public ModelAndView deleteUser(HttpServletRequest request) {
         int userId = Integer.parseInt(request.getParameter("id"));
-        userDao.deleteById(userId);
+        userDAO.deleteById(userId);
         return new ModelAndView("redirect:/");
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public ModelAndView saveUser(@ModelAttribute User user) {
-        userDao.saveOrUpdate(user);
+        userDAO.createUser(user);
         return new ModelAndView("redirect:/");
     }
 }

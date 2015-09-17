@@ -12,8 +12,8 @@ import java.io.Serializable;
 @Table(name = "EMAILS")
 public class Email implements Serializable{
 
+    private Integer emailId;
     private String email;
-
     private User user;
 
     public Email() {
@@ -26,7 +26,16 @@ public class Email implements Serializable{
     }
 
     @Id
-    @Column(name = "EMAIL")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "EMAIL_ID")
+    public Integer getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(Integer emailId) {
+        this.emailId = emailId;
+    }
+
     public String getEmail() {
         return email;
     }

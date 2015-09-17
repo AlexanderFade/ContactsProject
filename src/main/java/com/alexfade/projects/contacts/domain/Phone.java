@@ -12,8 +12,8 @@ import java.io.Serializable;
 @Table(name = "PHONES")
 public class Phone implements Serializable{
 
+    private Integer phoneId;
     private String phone;
-
     private User user;
 
     public Phone() {
@@ -26,7 +26,16 @@ public class Phone implements Serializable{
     }
 
     @Id
-    @Column(name = "PHONE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PHONE_ID")
+    public Integer getPhoneId() {
+        return phoneId;
+    }
+
+    public void setPhoneId(Integer phoneId) {
+        this.phoneId = phoneId;
+    }
+
     public String getPhone() {
         return phone;
     }

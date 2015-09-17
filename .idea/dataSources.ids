@@ -8,27 +8,31 @@
     <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
     <schema name="" catalog="contacts"/>
     <table name="USERS" schema="" catalog="contacts" type="TABLE">
-      <column name="USER_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="FIRST_NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="LOGIN" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="SECOND_NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="USER_ID"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="login" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="first_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="second_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="user_id"/>
       <exported-key name="FK_dc07w8gy7c47s1lbl5ierymv9" table="emails" schema="" catalog="contacts" columns="EMAIL_USER_ID_FK"/>
       <exported-key name="FK_dgy45rq1gxn74hwt1yg4b81ih" table="phones" schema="" catalog="contacts" columns="PHONE_USER_ID_FK"/>
-      <index name="UK_l3c3ahdulnjx8bt2ivgyvh1ss" unique="true" columns="LOGIN"/>
+      <index name="login_UNIQUE" unique="true" columns="login"/>
     </table>
     <table name="emails" schema="" catalog="contacts" type="TABLE">
+      <column name="EMAIL_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="EMAIL" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="EMAIL_USER_ID_FK" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="EMAIL"/>
+      <primary-key name="PRIMARY" columns="EMAIL_ID"/>
       <foreign-key name="FK_dc07w8gy7c47s1lbl5ierymv9" columns="EMAIL_USER_ID_FK" ref-table="USERS" ref-schema="" ref-catalog="contacts" ref-columns="USER_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="EMAIL_ID_UNIQUE" unique="true" columns="EMAIL_ID"/>
       <index name="FK_dc07w8gy7c47s1lbl5ierymv9" unique="false" columns="EMAIL_USER_ID_FK"/>
     </table>
     <table name="phones" schema="" catalog="contacts" type="TABLE">
+      <column name="PHONE_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="PHONE" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="PHONE_USER_ID_FK" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="PHONE"/>
+      <primary-key name="PRIMARY" columns="PHONE_ID"/>
       <foreign-key name="FK_dgy45rq1gxn74hwt1yg4b81ih" columns="PHONE_USER_ID_FK" ref-table="USERS" ref-schema="" ref-catalog="contacts" ref-columns="USER_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="PHONE_ID_UNIQUE" unique="true" columns="PHONE_ID"/>
       <index name="FK_dgy45rq1gxn74hwt1yg4b81ih" unique="false" columns="PHONE_USER_ID_FK"/>
     </table>
   </data-source>

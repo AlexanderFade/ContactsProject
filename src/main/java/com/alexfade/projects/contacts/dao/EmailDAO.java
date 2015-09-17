@@ -11,12 +11,12 @@ import java.util.List;
  */
 public interface EmailDAO {
 
-    void createEmail(Email email);
+    void createEmail(Integer userId, Email email);
     List<Email> getAllEmails();
     List<Email> getAllEmailsByUser(Integer userId);
-    Email getEmail(Integer userId);
-    void updateEmail(Email email);
+    Email getEmail(Integer emailId);
+    void editEmail(Email email);
     void deleteEmail(Integer emailId);
-    void deleteAllEmails(Integer userId);
+    void deleteAllEmailsByUser(Integer userId);
 
 }
