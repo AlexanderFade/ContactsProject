@@ -42,9 +42,9 @@ public class ApplicationContextConfig {
     public DataSource getDataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/contacts");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/contacts?useUnicode=true&characterEncoding=utf8");
         dataSource.setUsername("root");
-        dataSource.setPassword("root");
+        dataSource.setPassword("RswbN6uVnA");
 
         return dataSource;
     }
